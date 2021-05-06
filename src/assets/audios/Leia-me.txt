@@ -1,0 +1,11 @@
+Uso dos áudios:
+
+circle -> sempre que o usuário clicar num erro, ao lado esquerdo, e o mesmo for circulado.
+
+click -> ao clicar em qualquer botão.
+
+missclick -> ao clicar na imagem, porém em lugar que não haja erro a ser circulado.
+
+popup -> sempre que abre um novo popup (0,5s após circular um erro, por exemplo, ou quando clica no botão de opções)
+
+win -> ao abrir o popup da medalha (toca logo após o som de popup)
