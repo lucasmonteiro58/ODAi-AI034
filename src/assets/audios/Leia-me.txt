@@ -1,11 +1,15 @@
-Uso dos áudios:
+Botões -> Usuário clica em qualquer botão que não esteja especificado abaixo (Ex: ajuda, créditos, etc).
 
-circle -> sempre que o usuário clicar num erro, ao lado esquerdo, e o mesmo for circulado.
+Confirma -> Clica no botão CONFIRMA (dar um rápido delay antes de abrir o pop-up para dar tempo de terminar o som)
 
-click -> ao clicar em qualquer botão.
+Correto -> Toca ao aparecer o PopUp de resposta correta
 
-missclick -> ao clicar na imagem, porém em lugar que não haja erro a ser circulado.
+Errado -> Toca ao aparecer o popup de resposta errada.
 
-popup -> sempre que abre um novo popup (0,5s após circular um erro, por exemplo, ou quando clica no botão de opções)
+Início Loop -> Toca em loop na página inicial (colocar volume baixo).
 
-win -> ao abrir o popup da medalha (toca logo após o som de popup)
+Início Loop2 -> Alternativa mais leve e com menos qualidade do áudio acima.
+
+PopUp Final -> Toca ao final quando o usuário acerta todas as respostas e recebe a recompensa. (cuidado para não ficar muito alto)
+
+Selecionar -> Toca ao clicar e selecionar um crachá da mesa.
