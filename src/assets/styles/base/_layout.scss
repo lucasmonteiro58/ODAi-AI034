@@ -46,6 +46,27 @@ body {
     &:hover {
       background-color: #e31e33;
     }
+
+    &:disabled {
+      background-color: #c0a0a3;
+      cursor: not-allowed;
+    }
+  }
+
+  &.roxo-button {
+    background-color: #4a53e1;
+    width: 208px;
+    height: 47px;
+    justify-content: center;
+    .text {
+      color: white;
+      font-size: 31px;
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      background-color: #a3a8f0;
+    }
   }
 
   &.item {
@@ -86,4 +107,11 @@ body {
       }
     }
   }
+}
+
+.center-text {
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
+  font-family: AnonimusRegular;
 }

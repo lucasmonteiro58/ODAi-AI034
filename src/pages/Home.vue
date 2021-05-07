@@ -16,7 +16,9 @@
           :class="hoverCelular ? 'celular-roxo' : 'celular'"
           @mouseover="hoverCelular = true"
           @mouseout="hoverCelular = false"
-        ></div>
+        >
+          Ajuda
+        </div>
       </div>
       <div class="btn-section-menu">
         <button class="btn primary">
@@ -42,7 +44,11 @@
           <div
             v-for="actual in actualOptions"
             :key="actual.id"
-            class="carteira-id cracha"
+            class="carteira-id"
+            :class="
+              actual.image === IDCrachaSelect ? 'cracha-selected' : 'cracha'
+            "
+            @click.prevent="clickCracha(actual)"
           >
             <div class="image-id" :class="actual.image"></div>
             <div class="nome-id">{{ actual.nome }}</div>
@@ -60,13 +66,17 @@
               complete: question.isComplete,
               selected: question.isSelected
             }"
-            @click.prevent="changeEl(question)"
+            @click.prevent="clickChangeEl(question)"
           >
             <div class="text">{{ question.letra }}</div>
             <div class="check-complete"></div>
           </button>
         </div>
-        <button class="btn red-button confirmar-btn">
+        <button
+          :disabled="!selectCracha"
+          class="btn red-button confirmar-btn"
+          @click.prevent="clickConfirmar"
+        >
           <div class="text">Confirma</div>
         </button>
         <div class="pontos">
@@ -75,16 +85,38 @@
         </div>
       </div>
     </div>
+    <PopUpFeedback
+      v-if="showPopUpFeedback"
+      :is-showed="showPopUpFeedback"
+      :text="textFeedback"
+      :is-correct="typeFeedback"
+      @novamente="clickNovamente"
+      @continuar="clickContinuar"
+    ></PopUpFeedback>
+    <PopUpCongrats
+      v-if="showPopUpCongrats"
+      :is-showed="showPopUpCongrats"
+      @inicio="clickInicio"
+    ></PopUpCongrats>
   </section>
 </template>
 <script>
 import { questions } from '../consts/home'
+import PopUpFeedback from '../components/PopUpFeedback'
+import PopUpCongrats from '../components/PopUpCongrats.vue'
 export default {
+  components: { PopUpFeedback, PopUpCongrats },
   data() {
     return {
       hoverCelular: false,
       questions,
-      index: 0
+      index: 0,
+      selectCracha: null,
+      IDCrachaSelect: '',
+      showPopUpFeedback: false,
+      showPopUpCongrats: false,
+      textFeedback: '',
+      typeFeedback: true
     }
   },
   computed: {
@@ -96,14 +128,62 @@ export default {
     }
   },
   methods: {
-    changeEl(el) {
+    clickChangeEl(el) {
       this.deselectAll()
       el.isSelected = true
       this.index = el.id
     },
     deselectAll() {
+      // nao colocar som
       for (let i = 0; i < this.questions.length; i++) {
         this.questions[i].isSelected = false
+      }
+      this.IDCrachaSelect = ''
+      this.selectCracha = null
+    },
+    clickCracha(el) {
+      this.IDCrachaSelect = el.image
+      this.selectCracha = el
+    },
+    clickConfirmar() {
+      if (this.selectCracha.isCorrect) {
+        this.textFeedback = this.actualQuestion.textCorrect
+        this.typeFeedback = true
+        this.showPopUpFeedback = true
+      } else {
+        this.textFeedback = this.actualQuestion.textIncorrect
+        this.typeFeedback = false
+        this.showPopUpFeedback = true
+      }
+    },
+    clickNovamente() {
+      this.showPopUpFeedback = false
+    },
+    clickContinuar() {
+      // nao colocar som aqui
+      this.showPopUpFeedback = false
+      this.questions[this.index].isComplete = true
+      this.getNextQuestion()
+    },
+    getNextQuestion() {
+      // nao colocar som aqui
+      const next = this.questions.filter((el) => el.isComplete === false)
+      if (next[0]) {
+        this.clickChangeEl(next[0])
+      } else {
+        this.showPopUpCongrats = true
+      }
+    },
+    clickInicio() {
+      this.showPopUpCongrats = false
+      this.resetAtividade()
+    },
+    resetAtividade() {
+      // nao colocar som
+      this.deselectAll()
+      this.index = 0
+      for (let i = 0; i < this.questions.length; i++) {
+        this.questions[i].isComplete = false
       }
     }
   }
@@ -122,6 +202,19 @@ export default {
       cursor: pointer;
       margin-top: 69px;
       margin-bottom: 48px;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 29px;
+        text-transform: uppercase;
+        padding-right: 10px;
+        padding-bottom: 15px;
+
+        &:hover {
+          color: white;
+        }
+      }
     }
 
     .btn-section-menu {

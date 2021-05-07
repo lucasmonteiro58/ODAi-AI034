@@ -32,9 +32,9 @@ export const questions = [
     ],
     correctOption: 'litro',
     textCorrect:
-      'Parabéns, você acertou! <b>LITRO</b> é uma unidade de medida de <b>capacidade</b>, não de comprimento!',
+      '<p class="center-text">Parabéns, você acertou!</p> <b>LITRO</b> é uma unidade de medida de <b>capacidade</b>, não de comprimento!',
     textIncorrect:
-      'Calma, sem pânico! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>comprimento</b>! Vamos lá?'
+      '<p class="center-text">Calma, sem pânico!</p> Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>comprimento</b>! Vamos lá?'
   },
   {
     id: 1,
@@ -69,9 +69,9 @@ export const questions = [
     ],
     correctOption: 'termometro',
     textCorrect:
-      'É isso aí! <b>TERMÔMETRO</b> é um instrumento usado para medir <b>temperatura</b>, não massa.',
+      '<p class="center-text">É isso aí!</p> <b>TERMÔMETRO</b> é um instrumento usado para medir <b>temperatura</b>, não massa.',
     textIncorrect:
-      'Não tem problema! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>massa</b>! Tente de novo!'
+      '<p class="center-text"> Não tem problema!</p> Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>massa</b>! Tente de novo!'
   },
   {
     id: 2,
@@ -106,9 +106,9 @@ export const questions = [
     ],
     correctOption: 'quilograma',
     textCorrect:
-      'Na mosca! <b>QUILOGRAMA</b> é uma unidade de medida de <b>massa</b>, não de capacidade.',
+      '<p class="center-text">Na mosca! </p><b>QUILOGRAMA</b> é uma unidade de medida de <b>massa</b>, não de capacidade.',
     textIncorrect:
-      'Observe melhor! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>capacidade</b>! Vamos lá?'
+      '<p class="center-text">Observe melhor!</p> Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>capacidade</b>! Vamos lá?'
   },
   {
     id: 3,
@@ -136,15 +136,15 @@ export const questions = [
       },
       {
         id: 'relogio',
-        nome: 'relogio',
+        nome: 'relógio',
         image: 'd-relogio',
         isCorrect: false
       }
     ],
     correctOption: 'celsius',
     textCorrect:
-      'Muito bem, agente! <b>CELSIUS</b> é uma unidade de medida de <b>temperatura</b>, não de tempo!',
+      '<p class="center-text">Muito bem, agente!</p> <b>CELSIUS</b> é uma unidade de medida de <b>temperatura</b>, não de tempo!',
     textIncorrect:
-      'Calma, sem pânico! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>tempo</b>! Mais uma vez!'
+      '<p class="center-text">Calma, sem pânico! </p>Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>tempo</b>! Mais uma vez!'
   }
 ]
