@@ -2,6 +2,10 @@ body {
   @include sprites($spritesheet-sprites);
 }
 
+.t11 {
+  font-size: 11px;
+}
+
 .btn {
   cursor: pointer;
   display: flex;
@@ -10,23 +14,21 @@ body {
   justify-content: flex-end;
   gap: 6px;
   box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.25);
+
   &.primary {
-    background-color: #f7c044;
-    width: 69px;
+    background-color: #4a53e1;
+    width: 60px;
     height: 67px;
     .text {
       margin-bottom: 2px;
+      color: white;
+      text-transform: uppercase;
     }
     .iconeajuda {
       transform: scale(0.9);
     }
     &:hover {
-      background-color: #fcecc6;
-
-      .text,
-      .icon {
-        opacity: 0.5;
-      }
+      background-color: #2500e0;
     }
   }
 }

@@ -118,20 +118,22 @@ button:focus {
 }
 
 @font-face {
-  font-family: Confortaa;
-  src: url('../fonts/Comfortaa-VariableFont_wght.ttf');
+  font-family: AnonimusBold;
+  src: url('../fonts/AnonymousPro-Bold.ttf');
+}
+
+@font-face {
+  font-family: AnonimusRegular;
+  src: url('../fonts/AnonymousPro-Regular.ttf');
 }
 
 * {
-  font-family: Confortaa;
-  color: #282828;
-  text-transform: uppercase;
+  font-family: AnonimusBold;
+  color: #000000;
   font-size: 13px;
-  font-weight: 1000;
 }
 
 b {
-  font-family: Confortaa;
+  font-family: AnonimusBold;
   color: #007ec4;
-  font-weight: 1000;
 }

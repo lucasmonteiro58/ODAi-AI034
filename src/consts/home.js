@@ -1,72 +1,142 @@
-export const erros = [
+export const questions = [
   {
     id: 0,
-    name: 'escada',
-    isFind: false,
-    title: 'ESCADA SEM TELA',
-    image: 'popupescada',
-    circulo: 'c-escada',
-    text:
-      'Uma escada pode ser um perigo se uma criança cair pelas laterais! O ideal é colocarmos telas para impedir que isso aconteça, muito bem!'
+    letra: 'a',
+    options: [
+      {
+        id: 'quilometro',
+        nome: 'quilômetro',
+        image: 'a-quilometro',
+        isCorrect: false
+      },
+      {
+        id: 'metro',
+        nome: 'metro',
+        image: 'a-metro',
+        isCorrect: false
+      },
+      {
+        id: 'litro',
+        nome: 'litro',
+        image: 'a-litro',
+        isCorrect: true
+      },
+      {
+        id: 'regua',
+        nome: 'régua',
+        image: 'a-regua',
+        isCorrect: false
+      }
+    ],
+    correctOption: 'litro',
+    textCorrect:
+      'Parabéns, você acertou! <b>LITRO</b> é uma unidade de medida de <b>capacidade</b>, não de comprimento!',
+    textIncorrect:
+      'Calma, sem pânico! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>comprimento</b>! Vamos lá?'
   },
   {
-    id: 1,
-    name: 'mesa',
-    isFind: false,
-    image: 'popupfaca',
-    circulo: 'c-mesa',
-    title: 'FACAS NA MESA',
-    text:
-      'OLHA SÓ ESSAS PONTAS! CUIDADO! NÃO DEVEMOS DEIXAR FACAS POR AÍ. ELAS SÃO AFIADAS E PODEM CORTAR. DEIXE-AS SEMPRE GUARDADAS NAS GAVETAS.'
+    id: 0,
+    letra: 'b',
+    options: [
+      {
+        id: 'termometro',
+        nome: 'termômetro',
+        image: 'b-termometro',
+        isCorrect: true
+      },
+      {
+        id: 'grama',
+        nome: 'grama',
+        image: 'b-grama',
+        isCorrect: false
+      },
+      {
+        id: 'miligrama',
+        nome: 'miligrama',
+        image: 'b-miligrama',
+        isCorrect: false
+      },
+      {
+        id: 'balanca',
+        nome: 'balança',
+        image: 'b-balanca',
+        isCorrect: false
+      }
+    ],
+    correctOption: 'termometro',
+    textCorrect:
+      'É isso aí! <b>TERMÔMETRO</b> é um instrumento usado para medir <b>temperatura</b>, não massa.',
+    textIncorrect:
+      'Não tem problema! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>massa</b>! Tente de novo!'
   },
   {
-    id: 2,
-    name: 'balde',
-    isFind: false,
-    title: 'BALDE NO CHÃO',
-    image: 'popupbalde',
-    circulo: 'c-balde',
-    text:
-      'CUIDADO, CUIDADO! UM BALDE NO CHÃO É UM RISCO DE TOMBO! ALÉM DO QUÊ SE TIVEREM MATERIAIS DE LIMPEZA, ALGUMA CRIANÇA OU BICHINHO PODEM BEBER SEM QUERER! BOA OBSERVAÇÃO!'
+    id: 0,
+    letra: 'c',
+    options: [
+      {
+        id: 'litro',
+        nome: 'litro',
+        image: 'c-litro',
+        isCorrect: false
+      },
+      {
+        id: 'quilograma',
+        nome: 'quilograma',
+        image: 'c-quilograma',
+        isCorrect: true
+      },
+      {
+        id: 'capacidade',
+        nome: 'capacidade',
+        image: 'c-capacidade',
+        isCorrect: false
+      },
+      {
+        id: 'mililitro',
+        nome: 'mililitro',
+        image: 'c-mililitro',
+        isCorrect: false
+      }
+    ],
+    correctOption: 'quilograma',
+    textCorrect:
+      'Na mosca! <b>QUILOGRAMA</b> é uma unidade de medida de <b>massa</b>, não de capacidade.',
+    textIncorrect:
+      'Observe melhor! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>capacidade</b>! Vamos lá?'
   },
   {
-    id: 3,
-    name: 'remedios',
-    isFind: false,
-    title: 'CAIXA DE REMÉDIO',
-    image: 'popupremedio',
-    circulo: 'c-remedios',
-    text:
-      'NÃO PODEMOS DEIXAR CAIXAS DE REMÉDIO ONDE UMA CRIANÇA PODE MEXER. ELAS PODEM ENGOLIR ALGUMA COISA QUE NÃO DEVERIAM. DEVEMOS DEIXAR FECHADO E FORA DO ALCANCE. BEM NOTADO!'
-  },
-  {
-    id: 4,
-    name: 'gaveta',
-    isFind: false,
-    title: 'MATERIAL DE COSTURA',
-    image: 'popupcostura',
-    circulo: 'c-agulhas',
-    text:
-      'AGULHAS E ALFINETES! TÃO PONTIAGUDAS E PERIGOSAS! PEÇA AOS ADULTOS PARA DEIXAR OBJETOS ASSIM LONGE DO ALCANCE DAS CRIANÇAS POIS, SE FURAR, AI! DÓI MUITO!'
-  },
-  {
-    id: 5,
-    name: 'tesoura',
-    isFind: false,
-    title: 'TESOURA NA MESA',
-    circulo: 'c-tesoura',
-    image: 'popuptesoura',
-    text:
-      'TESOURA CORTA E PODE FURAR! SE FOR USAR TESOURA, CHAME UM ADULTO PARA TE ORIENTAR E, AO TERMINAR, DEIXE-A BEM GUARDADA! ÓTIMA OBSERVAÇÃO!'
-  },
-  {
-    id: 6,
-    name: 'tomada',
-    isFind: false,
-    title: 'TOMADA DESTAMPADA',
-    circulo: 'c-tomada',
-    image: 'popuptomada',
-    text:
-      'QUE PERIGO! UMA TOMADA DESTAMPADA PODE SER MOTIVO PARA CHOQUES! PEÇAM PARA OS ADULTOS COLOCAREM PROTEÇÕES EM TODAS AS TOMADAS DA CASA! BEM OBSERVADO!'
+    id: 0,
+    letra: 'd',
+    options: [
+      {
+        id: 'celcius',
+        nome: 'celcius',
+        image: 'd-celcius',
+        isCorrect: true
+      },
+      {
+        id: 'segundo',
+        nome: 'segundo',
+        image: 'd-segundo',
+        isCorrect: false
+      },
+      {
+        id: 'minuto',
+        nome: 'minuto',
+        image: 'd-minuto',
+        isCorrect: false
+      },
+      {
+        id: 'relogio',
+        nome: 'relogio',
+        image: 'd-relogio',
+        isCorrect: false
+      }
+    ],
+    correctOption: 'celcius',
+    textCorrect:
+      'Muito bem, agente! <b>CELCIUS</b> é uma unidade de medida de <b>temperatura</b>, não de tempo!',
+    textIncorrect:
+      'Calma, sem pânico! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>tempo</b>! Mais uma vez!'
   }
 ]
