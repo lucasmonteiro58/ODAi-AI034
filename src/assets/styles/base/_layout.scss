@@ -31,4 +31,59 @@ body {
       background-color: #2500e0;
     }
   }
+
+  &.red-button {
+    background-color: #ff6170;
+    width: 220px;
+    height: 67px;
+    justify-content: center;
+    .text {
+      color: white;
+      font-size: 38px;
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      background-color: #e31e33;
+    }
+  }
+
+  &.item {
+    background-color: #8083ab;
+    width: 60px;
+    height: 67px;
+    justify-content: center;
+    position: relative;
+
+    .check-complete {
+      display: none;
+    }
+    .text {
+      margin-bottom: 2px;
+      color: white;
+      text-transform: uppercase;
+      font-size: 38px;
+    }
+    .iconeajuda {
+      transform: scale(0.9);
+    }
+    &:hover {
+      background-color: #a3a8f0;
+    }
+    &.selected {
+      background-color: #2500e0;
+    }
+    &.complete {
+      .text {
+        color: #76e08d;
+      }
+
+      .check-complete {
+        position: absolute;
+        display: block;
+        top: -6px;
+        left: 40px;
+      }
+    }
+  }
 }

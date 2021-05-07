@@ -2,6 +2,8 @@ export const questions = [
   {
     id: 0,
     letra: 'a',
+    isComplete: false,
+    isSelected: true,
     options: [
       {
         id: 'quilometro',
@@ -35,8 +37,10 @@ export const questions = [
       'Calma, sem pânico! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>comprimento</b>! Vamos lá?'
   },
   {
-    id: 0,
+    id: 1,
     letra: 'b',
+    isComplete: false,
+    isSelected: false,
     options: [
       {
         id: 'termometro',
@@ -70,8 +74,10 @@ export const questions = [
       'Não tem problema! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>massa</b>! Tente de novo!'
   },
   {
-    id: 0,
+    id: 2,
     letra: 'c',
+    isComplete: false,
+    isSelected: false,
     options: [
       {
         id: 'litro',
@@ -94,7 +100,7 @@ export const questions = [
       {
         id: 'mililitro',
         nome: 'mililitro',
-        image: 'c-mililitro',
+        image: 'c-militro',
         isCorrect: false
       }
     ],
@@ -105,13 +111,15 @@ export const questions = [
       'Observe melhor! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>capacidade</b>! Vamos lá?'
   },
   {
-    id: 0,
+    id: 3,
     letra: 'd',
+    isComplete: false,
+    isSelected: false,
     options: [
       {
-        id: 'celcius',
-        nome: 'celcius',
-        image: 'd-celcius',
+        id: 'celsius',
+        nome: 'celsius',
+        image: 'd-celsius',
         isCorrect: true
       },
       {
@@ -123,7 +131,7 @@ export const questions = [
       {
         id: 'minuto',
         nome: 'minuto',
-        image: 'd-minuto',
+        image: 'd-minuti',
         isCorrect: false
       },
       {
@@ -133,9 +141,9 @@ export const questions = [
         isCorrect: false
       }
     ],
-    correctOption: 'celcius',
+    correctOption: 'celsius',
     textCorrect:
-      'Muito bem, agente! <b>CELCIUS</b> é uma unidade de medida de <b>temperatura</b>, não de tempo!',
+      'Muito bem, agente! <b>CELSIUS</b> é uma unidade de medida de <b>temperatura</b>, não de tempo!',
     textIncorrect:
       'Calma, sem pânico! Procure por uma palavra que <b>não</b> tenha relação com medidas de <b>tempo</b>! Mais uma vez!'
   }
