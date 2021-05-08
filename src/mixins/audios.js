@@ -45,7 +45,10 @@ const audios = {
       }, 500)
     },
     audioLoopPlay() {
-      if (this.soundState) this.audioLoop.play()
+      if (this.soundState) {
+        this.audioLoop.stop()
+        this.audioLoop.play()
+      }
     },
     audioLoopStop() {
       this.audioLoop.stop()
