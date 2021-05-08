@@ -117,7 +117,11 @@
       :is-showed="showPopUpCongrats"
       @inicio="clickInicio"
     ></PopUpCongrats>
-    <div class="protection" :class="'index-help' + indexHelp"></div>
+    <div
+      v-if="showHelp"
+      class="protection"
+      :class="'index-help' + indexHelp"
+    ></div>
     <Help
       v-if="showHelp"
       :index="indexHelp"
@@ -140,8 +144,10 @@ import PopUpFeedback from '../components/PopUpFeedback'
 import PopUpCongrats from '../components/PopUpCongrats.vue'
 import Inicio from '../components/Inicio.vue'
 import PopUpCreditos from '../components/PopUpCreditos.vue'
+import audios from '../mixins/audios'
 export default {
   components: { PopUpFeedback, PopUpCongrats, Inicio, PopUpCreditos },
+  mixins: [audios],
   data() {
     return {
       hoverCelular: false,
@@ -157,7 +163,8 @@ export default {
       textFeedback: '',
       typeFeedback: true,
       pontuation: 0,
-      indexHelp: 0
+      indexHelp: 0,
+      preventClickConfirma: true
     }
   },
   computed: {
@@ -186,14 +193,17 @@ export default {
   },
   methods: {
     clickChangeEl(el) {
+      this.audioBotoesPlay() // audio
       this.deselectAll()
       el.isSelected = true
       this.index = el.id
     },
     clickVoltarHelp() {
+      this.audioBotoesPlay() // audio
       this.indexHelp--
     },
     clickAvancarHelp() {
+      this.audioBotoesPlay() // audio
       if (this.indexHelp === 2) {
         this.showHelp = false
         this.indexHelp = 0
@@ -202,9 +212,12 @@ export default {
       }
     },
     clickCloseHelp() {
+      this.audioBotoesPlay() // audio
+      this.indexHelp = 0
       this.showHelp = false
     },
     clickOpenHelp() {
+      this.audioBotoesPlay() // audio
       this.indexHelp = 0
       this.showHelp = true
     },
@@ -212,9 +225,11 @@ export default {
       this.showCreditos = true
     },
     closeCreditos() {
+      this.audioBotoesPlay() // audio
       this.showCreditos = false
     },
     toogleSound() {
+      this.audioBotoesPlay() // audio
       this.$store.commit('changeSoundState', !this.soundState)
     },
     deselectAll() {
@@ -226,26 +241,40 @@ export default {
       this.selectCracha = null
     },
     clickCracha(el) {
+      this.audioCrachaPlay() // audio
       this.IDCrachaSelect = el.image
       this.selectCracha = el
     },
     clickConfirmar() {
+      this.audioConfirmaPlay() // audio
+      this.preventClickConfirma = false
       if (this.selectCracha.isCorrect) {
+        this.pontuation = this.pontuation + 5
         this.textFeedback = this.actualQuestion.textCorrect
         this.typeFeedback = true
-        this.showPopUpFeedback = true
-        this.pontuation = this.pontuation + 5
+        setTimeout(() => {
+          this.showPopUpFeedback = true
+          this.audioCorretoPlay() // audio
+          this.preventClickConfirma = true
+        }, 500)
       } else {
         this.textFeedback = this.actualQuestion.textIncorrect
         this.typeFeedback = false
-        this.showPopUpFeedback = true
+        setTimeout(() => {
+          this.showPopUpFeedback = true
+          this.audioErradoPlay() // audio
+        }, 500)
       }
     },
     clickNovamente() {
+      this.audioErradoStop()
+      this.audioBotoesPlay() // audio
+
       this.showPopUpFeedback = false
     },
     clickContinuar() {
       // nao colocar som aqui
+      this.audioCorretoStop()
       this.showPopUpFeedback = false
       this.questions[this.index].isComplete = true
       this.getNextQuestion()
@@ -257,15 +286,17 @@ export default {
         this.clickChangeEl(next[0])
       } else {
         this.showPopUpCongrats = true
+        this.audioFinalPlay()
       }
     },
     clickInicio() {
+      this.audioBotoesPlay() // audio
       this.showPopUpCongrats = false
       this.resetAtividade()
       this.showInicio = true
     },
     clickIniciar() {
-      // nao por som
+      this.audioBotoesPlay() // audio
       this.showInicio = false
       this.showHelp = true
     },
