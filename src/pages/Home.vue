@@ -222,6 +222,7 @@ export default {
       this.showHelp = true
     },
     openCreditos() {
+      this.audioBotoesPlay()
       this.showCreditos = true
     },
     closeCreditos() {
