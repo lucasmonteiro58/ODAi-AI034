@@ -1,27 +1,21 @@
 'use strict'
 
-const path = require('@/assets/spritesheet.png')
+const path = require('@/assets/spritesheet.png').default
 // const path = null
 
 function runBlock(context) {
   if (!context.isDev)
     window.onload = () => {
+      document.querySelector('.stage-container').classList.add('not-ready')
       const image = new Image()
-      image.onload = () => {
-        isAssetReady()
-      }
+      image.onload = isAssetReady
       image.src = path
     }
   else {
-    window.onload = () => {
-      document.querySelector('.stage-container').classList.remove('not-ready')
-      document.querySelector('.loading-screen').classList.add('not-ready')
-    }
+    window.onload = isAssetReady
   }
-
   return false
 }
-
 function isAssetReady() {
   setTimeout(() => {
     document.querySelector('.stage-container').classList.remove('not-ready')
