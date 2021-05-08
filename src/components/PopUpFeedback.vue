@@ -97,7 +97,7 @@ export default {
 
   .backdrop {
     position: absolute;
-    background-color: #00000070;
+    background-color: #0000009f;
     width: 100%;
     height: 100%;
   }

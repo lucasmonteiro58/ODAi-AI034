@@ -30,6 +30,9 @@ body {
     &:hover {
       background-color: #2500e0;
     }
+    &.index-help2 {
+      z-index: 20;
+    }
   }
 
   &.red-button {
@@ -114,4 +117,10 @@ body {
   text-align: center;
   font-size: 23px;
   font-family: AnonimusRegular;
+}
+
+.text-bold {
+  color: white;
+  font-size: 16px;
+  font-family: AnonimusBold;
 }

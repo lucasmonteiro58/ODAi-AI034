@@ -2,11 +2,19 @@
   <section class="container">
     <div class="left-content">
       <div class="btn-section-menu">
-        <button class="btn primary">
+        <button
+          class="btn primary"
+          :class="'index-help' + indexHelp"
+          @click.prevent="clickInicio"
+        >
           <div class="icon ico-inicio"></div>
           <div class="text">Início</div>
         </button>
-        <button class="btn primary">
+        <button
+          class="btn primary"
+          :class="'index-help' + indexHelp"
+          @click.prevent="clickReiniciar"
+        >
           <div class="icon ico-ereiniciar"></div>
           <div class="text t11">Reiniciar</div>
         </button>
@@ -16,16 +24,25 @@
           :class="hoverCelular ? 'celular-roxo' : 'celular'"
           @mouseover="hoverCelular = true"
           @mouseout="hoverCelular = false"
+          @click.prevent="clickOpenHelp"
         >
           Ajuda
         </div>
       </div>
       <div class="btn-section-menu">
-        <button class="btn primary">
-          <div class="icon ico-som-on"></div>
+        <button
+          class="btn primary zindex10"
+          :class="'index-help' + indexHelp"
+          @click.prevent="toogleSound"
+        >
+          <div class="icon" :class="soundClass"></div>
           <div class="text">Som</div>
         </button>
-        <button class="btn primary">
+        <button
+          class="btn primary zindex10"
+          :class="'index-help' + indexHelp"
+          @click.prevent="openCreditos"
+        >
           <div class="icon ico-creditos"></div>
           <div class="text t11">Créditos</div>
         </button>
@@ -42,12 +59,13 @@
       <div class="identidade-content">
         <div class="identidades-section">
           <div
-            v-for="actual in actualOptions"
+            v-for="(actual, i) in actualOptions"
             :key="actual.id"
             class="carteira-id"
-            :class="
-              actual.image === IDCrachaSelect ? 'cracha-selected' : 'cracha'
-            "
+            :class="[
+              actual.image === IDCrachaSelect ? 'cracha-selected' : 'cracha',
+              i === 1 || i == 3 ? 'index-help' + indexHelp : ''
+            ]"
             @click.prevent="clickCracha(actual)"
           >
             <div class="image-id" :class="actual.image"></div>
@@ -57,7 +75,7 @@
       </div>
 
       <div class="question-btn-section">
-        <div class="button-section">
+        <div class="button-section" :class="'index-help' + indexHelp">
           <button
             v-for="question in questions"
             :key="question.id"
@@ -75,13 +93,14 @@
         <button
           :disabled="!selectCracha"
           class="btn red-button confirmar-btn"
+          :class="'index-help' + indexHelp"
           @click.prevent="clickConfirmar"
         >
           <div class="text">Confirma</div>
         </button>
-        <div class="pontos">
+        <div class="pontos" :class="'index-help' + indexHelp">
           <div class="desc">PONTOS</div>
-          <div class="value">00</div>
+          <div class="value">{{ textPontuation }}</div>
         </div>
       </div>
     </div>
@@ -98,14 +117,31 @@
       :is-showed="showPopUpCongrats"
       @inicio="clickInicio"
     ></PopUpCongrats>
+    <div class="protection" :class="'index-help' + indexHelp"></div>
+    <Help
+      v-if="showHelp"
+      :index="indexHelp"
+      @voltar="clickVoltarHelp"
+      @close="clickCloseHelp"
+      @avancar="clickAvancarHelp"
+    ></Help>
+
+    <Inicio v-if="showInicio" @iniciar="clickIniciar"></Inicio>
+    <PopUpCreditos
+      v-if="showCreditos"
+      :is-showed="showCreditos"
+      @close="closeCreditos"
+    ></PopUpCreditos>
   </section>
 </template>
 <script>
 import { questions } from '../consts/home'
 import PopUpFeedback from '../components/PopUpFeedback'
 import PopUpCongrats from '../components/PopUpCongrats.vue'
+import Inicio from '../components/Inicio.vue'
+import PopUpCreditos from '../components/PopUpCreditos.vue'
 export default {
-  components: { PopUpFeedback, PopUpCongrats },
+  components: { PopUpFeedback, PopUpCongrats, Inicio, PopUpCreditos },
   data() {
     return {
       hoverCelular: false,
@@ -115,8 +151,13 @@ export default {
       IDCrachaSelect: '',
       showPopUpFeedback: false,
       showPopUpCongrats: false,
+      showCreditos: false,
+      showHelp: false,
+      showInicio: true,
       textFeedback: '',
-      typeFeedback: true
+      typeFeedback: true,
+      pontuation: 0,
+      indexHelp: 0
     }
   },
   computed: {
@@ -125,13 +166,56 @@ export default {
     },
     actualOptions() {
       return this.actualQuestion.options
+    },
+    textPontuation() {
+      if (this.pontuation < 9) {
+        return '0' + this.pontuation
+      } else return this.pontuation
+    },
+    soundState() {
+      return this.$store.state.soundState
+    },
+    soundClass() {
+      if (this.soundState) return 'ico-som-on'
+      else return 'ico-sound-off'
     }
+  },
+  mounted() {
+    this.$store.commit('changeBackground', 'bg-cidade')
+    this.clickChangeEl(this.actualQuestion)
   },
   methods: {
     clickChangeEl(el) {
       this.deselectAll()
       el.isSelected = true
       this.index = el.id
+    },
+    clickVoltarHelp() {
+      this.indexHelp--
+    },
+    clickAvancarHelp() {
+      if (this.indexHelp === 2) {
+        this.showHelp = false
+        this.indexHelp = 0
+      } else {
+        this.indexHelp++
+      }
+    },
+    clickCloseHelp() {
+      this.showHelp = false
+    },
+    clickOpenHelp() {
+      this.indexHelp = 0
+      this.showHelp = true
+    },
+    openCreditos() {
+      this.showCreditos = true
+    },
+    closeCreditos() {
+      this.showCreditos = false
+    },
+    toogleSound() {
+      this.$store.commit('changeSoundState', !this.soundState)
     },
     deselectAll() {
       // nao colocar som
@@ -150,6 +234,7 @@ export default {
         this.textFeedback = this.actualQuestion.textCorrect
         this.typeFeedback = true
         this.showPopUpFeedback = true
+        this.pontuation = this.pontuation + 5
       } else {
         this.textFeedback = this.actualQuestion.textIncorrect
         this.typeFeedback = false
@@ -177,19 +262,34 @@ export default {
     clickInicio() {
       this.showPopUpCongrats = false
       this.resetAtividade()
+      this.showInicio = true
+    },
+    clickIniciar() {
+      // nao por som
+      this.showInicio = false
+      this.showHelp = true
     },
     resetAtividade() {
       // nao colocar som
       this.deselectAll()
       this.index = 0
+      this.pontuation = 0
       for (let i = 0; i < this.questions.length; i++) {
         this.questions[i].isComplete = false
       }
+    },
+    clickReiniciar() {
+      // nao por som
+      this.resetAtividade()
+      this.clickChangeEl(this.actualQuestion)
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+.zindex10 {
+  z-index: 10;
+}
 .container {
   @include flex-center;
   padding: 40px;
@@ -245,6 +345,10 @@ export default {
           border-radius: 10px;
           box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.25);
 
+          &.index-help1 {
+            z-index: 20;
+          }
+
           &:hover {
             box-shadow: inset 0px 0px 0px 5px #2500e0;
           }
@@ -275,14 +379,25 @@ export default {
     .question-btn-section {
       margin-left: 20px;
       display: flex;
+
       .button-section {
         display: flex;
         justify-content: space-between;
         width: 301px;
+
+        &.index-help1 {
+          button {
+            z-index: 20;
+          }
+        }
       }
 
       .confirmar-btn {
         margin-left: 101px;
+
+        &.index-help1 {
+          z-index: 20;
+        }
       }
 
       .pontos {
@@ -295,6 +410,10 @@ export default {
         justify-content: center;
         text-align: center;
         margin-left: 21px;
+
+        &.index-help1 {
+          z-index: 20;
+        }
         .desc {
           color: #f8f8f8;
           font-size: 16px;
@@ -320,6 +439,35 @@ export default {
     width: 400px;
     text-align: right;
     margin-left: 134px;
+  }
+}
+
+.protection {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+
+  &.index-help0 {
+    display: none;
+  }
+
+  &.index-help1 {
+    clip-path: polygon(
+      0 0,
+      100% 0%,
+      100% 99%,
+      59% 100%,
+      60% 0,
+      15% 0,
+      15% 82%,
+      60% 82%,
+      68% 100%,
+      0 100%
+    );
+  }
+  &.index-help2 {
+    clip-path: polygon(0 0, 12% 0, 12% 100%, 0% 100%);
   }
 }
 </style>
