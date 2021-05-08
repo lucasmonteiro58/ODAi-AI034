@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('@/assets/spritesheet.png').default
-const audioInit = require('@/assets/audios/inicioloop2.wav')
 
 // const path = null
 
@@ -14,16 +13,12 @@ function runBlock(context) {
     }
   else {
     window.onload = isAssetReady
-    console.log(audioInit)
   }
   return false
 }
 function isAssetReady() {
-  console.log('carregou imagem')
   setTimeout(() => {
     document.querySelector('.loading-screen').classList.add('not-ready')
-
-    console.log('terminou timout')
   }, 2400)
 }
 
