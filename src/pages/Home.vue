@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div class="left-content">
-      <div id="simulateClick" @click="simulateClick"></div>
       <div class="btn-section-menu">
         <button
           class="btn primary"
@@ -193,9 +192,6 @@ export default {
     this.clickChangeEl(this.actualQuestion)
   },
   methods: {
-    simulateClick() {
-      // this.audioLoopPlay()
-    },
     clickChangeEl(el) {
       this.audioBotoesPlay() // audio
       this.deselectAll()

@@ -4,7 +4,6 @@ import botoes from '../assets/audios/botoes.wav'
 import confirma from '../assets/audios/confirma.wav'
 import correto from '../assets/audios/correto.wav'
 import errado from '../assets/audios/errado.wav'
-import inicioloop2 from '../assets/audios/inicioloop2.wav'
 import popupfinal from '../assets/audios/popupfinal.wav'
 import selecionar from '../assets/audios/selecionar.wav'
 
@@ -14,7 +13,6 @@ const audios = {
     const audioConfirma = useSound(confirma)
     const audioCorreto = useSound(correto)
     const audioErrado = useSound(errado)
-    const audioLoop = useSound(inicioloop2, { loop: true })
     const audioFinal = useSound(popupfinal)
     const audioCracha = useSound(selecionar)
     return {
@@ -22,7 +20,6 @@ const audios = {
       audioConfirma,
       audioCorreto,
       audioErrado,
-      audioLoop,
       audioFinal,
       audioCracha
     }
@@ -43,12 +40,6 @@ const audios = {
       setTimeout(() => {
         if (this.soundState) this.audioErrado.play()
       }, 500)
-    },
-    audioLoopPlay() {
-      if (this.soundState) {
-        this.audioLoop.stop()
-        this.audioLoop.play()
-      }
     },
     audioLoopStop() {
       this.audioLoop.stop()
