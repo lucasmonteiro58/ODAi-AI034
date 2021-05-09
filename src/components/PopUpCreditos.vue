@@ -20,6 +20,7 @@
         <p>Check por Robert Won do Noun Project</p>
         <p>Delete por Robert Won do Noun Project</p>
         <p>Sound por Adrien Coquet do Noun Project</p>
+        <p>Restart por Jejen Juliansyah Nur Agung do Noun Project</p>
         <p class="last">Home por icongeek do Noun Project</p>
         <b>ÁUDIO</b>
         <p>Orchestral Victory Fanfare por Sheyvan do Freesound.org</p>

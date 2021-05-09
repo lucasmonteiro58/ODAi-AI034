@@ -230,8 +230,8 @@ export default {
       this.showCreditos = false
     },
     toogleSound() {
-      this.audioBotoesPlay() // audio
       this.$store.commit('changeSoundState', !this.soundState)
+      this.audioBotoesPlay() // audio
     },
     deselectAll() {
       // nao colocar som
