@@ -57,7 +57,23 @@
         </div>
       </div>
       <div class="identidade-content">
-        <div class="identidades-section">
+        <!--Completado -->
+        <div v-if="actualQuestion.isComplete" class="identidades-section">
+          <div
+            v-for="(actual, i) in actualOptions"
+            :key="actual.id"
+            class="carteira-id completed"
+            :class="[
+              actual.isCorrect ? 'cracha-selected' : 'cracha',
+              i === 1 || i == 3 ? 'index-help' + indexHelp : ''
+            ]"
+          >
+            <div class="image-id" :class="actual.image"></div>
+            <div class="nome-id">{{ actual.nome }}</div>
+          </div>
+        </div>
+        <!-- Não Completado -->
+        <div v-else class="identidades-section">
           <div
             v-for="(actual, i) in actualOptions"
             :key="actual.id"
@@ -383,6 +399,13 @@ export default {
 
           &:hover {
             box-shadow: inset 0px 0px 0px 5px #2500e0;
+          }
+
+          &.completed {
+            cursor: initial;
+            &:hover {
+              box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.25);
+            }
           }
 
           .image-id {

@@ -9,25 +9,29 @@ export const questions = [
         id: 'quilometro',
         nome: 'quilômetro',
         image: 'a-quilometro',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       },
       {
         id: 'metro',
         nome: 'metro',
         image: 'a-metro',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       },
       {
         id: 'litro',
         nome: 'litro',
         image: 'a-litro',
-        isCorrect: true
+        isCorrect: true,
+        isSelected: false
       },
       {
         id: 'regua',
         nome: 'régua',
         image: 'a-regua',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       }
     ],
     correctOption: 'litro',
@@ -46,25 +50,29 @@ export const questions = [
         id: 'termometro',
         nome: 'termômetro',
         image: 'b-termometro',
-        isCorrect: true
+        isCorrect: true,
+        isSelected: false
       },
       {
         id: 'grama',
         nome: 'grama',
         image: 'b-grama',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       },
       {
         id: 'miligrama',
         nome: 'miligrama',
         image: 'b-miligrama',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       },
       {
         id: 'balanca',
         nome: 'balança',
         image: 'b-balanca',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       }
     ],
     correctOption: 'termometro',
@@ -83,25 +91,29 @@ export const questions = [
         id: 'litro',
         nome: 'litro',
         image: 'c-litro',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       },
       {
         id: 'quilograma',
         nome: 'quilograma',
         image: 'c-quilograma',
-        isCorrect: true
+        isCorrect: true,
+        isSelected: false
       },
       {
         id: 'capacidade',
         nome: 'capacidade',
         image: 'c-capacidade',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       },
       {
         id: 'mililitro',
         nome: 'mililitro',
         image: 'c-militro',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       }
     ],
     correctOption: 'quilograma',
@@ -120,25 +132,29 @@ export const questions = [
         id: 'celsius',
         nome: 'celsius',
         image: 'd-celsius',
-        isCorrect: true
+        isCorrect: true,
+        isSelected: false
       },
       {
         id: 'segundo',
         nome: 'segundo',
         image: 'd-segundo',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       },
       {
         id: 'minuto',
         nome: 'minuto',
         image: 'd-minuti',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       },
       {
         id: 'relogio',
         nome: 'relógio',
         image: 'd-relogio',
-        isCorrect: false
+        isCorrect: false,
+        isSelected: false
       }
     ],
     correctOption: 'celsius',
